@@ -13,12 +13,11 @@ app.use(cors());
 
 app.use("/users", userRouter);
 
-const MONGO_URI = "ajfe2krn13901421-i";
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(MONGO_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
-    app.listen(port, () => console.log(`Server started at ${port}`));
+    app.listen(PORT, () => console.log(`Server started at ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
